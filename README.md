@@ -11,9 +11,51 @@ The dataset used for this analysis is sourced from the M3 competition dataset, c
 - **Out-of-sample Data (`xx`)**: Future observations used to evaluate forecast accuracy.
 
 Key characteristics of the dataset:
-- Varying frequencies (monthly, quarterly, yearly).
-- Presence of seasonality and trends.
-- Real-world relevance across business domains.
+### Structure of the M3 Competition Dataset
+
+The M3 Competition dataset is meticulously organized to evaluate forecasting methods across diverse domains and time frequencies. Its structure facilitates robust model comparison and ensures the applicability of insights to real-world scenarios.
+
+---
+
+#### **Key Components**
+1. **Time Series Distribution**:
+   - The dataset comprises **3003 time series** distributed across six domains:
+     - **Micro**: Small-scale business data.
+     - **Industry**: Manufacturing and production.
+     - **Finance**: Economic and stock market indicators.
+     - **Demographics**: Population, births, deaths, etc.
+     - **Macroeconomics**: National and global economic metrics.
+     - **Others**: Miscellaneous series not classified in the above.
+
+2. **Time Frequencies**:
+   - The dataset includes time series of different frequencies:
+     - **Yearly (645 series)**: Data recorded annually.
+     - **Quarterly (756 series)**: Data recorded every quarter.
+     - **Monthly (1428 series)**: Data recorded every month.
+     - **Other frequencies**: Weekly, daily, and hourly series (a smaller portion).
+
+3. **Components of Each Series**:
+   - Each time series has two distinct parts:
+     - **In-sample data (`x`)**: Historical observations used for training forecasting models.
+     - **Out-of-sample data (`xx`)**: A pre-defined forecast horizon (e.g., next 18 months for monthly series) reserved for evaluating model accuracy.
+
+4. **Lengths of Series**:
+   - The in-sample length varies by series, reflecting the real-world scenarios from which the data was collected.
+   - The out-of-sample lengths are standardized for each frequency:
+     - **Yearly**: 6 years.
+     - **Quarterly**: 8 quarters.
+     - **Monthly**: 18 months.
+
+---
+
+#### **Purpose of Structuring**
+- The consistent segmentation of in-sample and out-of-sample data ensures that models can be benchmarked on their ability to generalize beyond observed data.
+- Grouping by domain and frequency allows researchers to identify methods that perform best under specific conditions (e.g., seasonal vs. non-seasonal data).
+
+---
+
+This structured approach makes the M3 dataset an invaluable resource for testing and comparing forecasting methodologies in both academic research and practical business applications.
+
 
 ![Dataset Visualization](figures/dataset_visualization.png)
 
