@@ -28,12 +28,16 @@ The M3 Competition dataset is meticulously organized to evaluate forecasting met
      - **Macroeconomics**: National and global economic metrics.
      - **Others**: Miscellaneous series not classified in the above.
 
+   ![Time Series Distribution](figures/time_series_distribution.png)
+
 2. **Time Frequencies**:
    - The dataset includes time series of different frequencies:
      - **Yearly (645 series)**: Data recorded annually.
      - **Quarterly (756 series)**: Data recorded every quarter.
      - **Monthly (1428 series)**: Data recorded every month.
      - **Other frequencies**: Weekly, daily, and hourly series (a smaller portion).
+
+   ![Time Frequencies](figures/time_frequencies.png)
 
 3. **Components of Each Series**:
    - Each time series has two distinct parts:
@@ -71,6 +75,8 @@ This structured approach makes the M3 dataset an invaluable resource for testing
   - Outlier detection and summary statistics.
 
 ![Seasonal Plot](figures/seasonal_plot.png)
+![ACF and PACF](figures/acf_pacf.png)
+![Decomposition](figures/decomposition.png)
 
 ### 2. ARIMA Modelling
 - **Script**: `Manual Arima Modelling.R`
@@ -106,6 +112,8 @@ This structured approach makes the M3 dataset an invaluable resource for testing
   - Regression models with seasonality outperformed simpler approaches.
   - Linear regression forecasts visualized against actual data.
 
+![Regression Forecast](figures/regression_forecast.png)
+
 ### 5. Batch Forecasting
 - **Script**: `Batch Forecasting.R`
 - **Objective**: Automate forecasting for multiple time series using ARIMA and ETS models.
@@ -115,6 +123,8 @@ This structured approach makes the M3 dataset an invaluable resource for testing
 - **Key Outputs**:
   - Benchmark results consolidated across series.
   - Performance metrics evaluated for ARIMA, ETS, and baseline models.
+
+![Batch Forecasting](figures/batch_forecasting.png)
 
 ---
 
