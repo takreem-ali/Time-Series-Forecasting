@@ -44,18 +44,22 @@ The dataset includes time series of different frequencies:
 Manual forecasting focuses on **series 1910**, which records the total shipment of glass containers from 1981 to 1992.
 
 - The seasonal plot shows clear monthly seasonality:
+
 ![Seasonal Plot](figures/seasonal_plot.png)
 
 - The decomposition highlights the trend, seasonality, and residuals:
+
 ![Decomposition](figures/decomposition.png)
 
 ---
 
 ### Forecasting Results
 - **ARIMA Forecast**: Robust for medium- to long-term predictions:
+
 ![ARIMA Forecast](figures/arima_forecast.png)
 
 - **ETS Forecast**: Excellent for short-term accuracy:
+
 ![ETS Forecast](figures/ets_forecast.png)
 
 ---
