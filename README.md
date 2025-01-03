@@ -1,4 +1,4 @@
-# Business Analytics Report: Time Series Forecasting
+# Comprehensive Time Series Forecasting with the M3 Competition Dataset
 
 This repository presents a comprehensive business analytics report on time series forecasting, utilizing various statistical and machine learning models to analyze and predict future trends. The analysis covers exploratory data insights, forecasting models, evaluation metrics, and actionable business insights.
 
