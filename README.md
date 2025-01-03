@@ -4,19 +4,21 @@ This repository presents a comprehensive business analytics report on time serie
 
 ---
 
-## **Dataset Overview**
+## Dataset Overview
 
 The dataset used for this analysis is sourced from the M3 competition dataset, containing various time series data across industries like finance, retail, and manufacturing. Each time series includes:
 - **In-sample Data (`x`)**: Historical observations used for model training.
 - **Out-of-sample Data (`xx`)**: Future observations used to evaluate forecast accuracy.
 
-# **Key characteristics of the dataset:**
+---
+
+### Key Characteristics of the Dataset
 
 The M3 Competition dataset is meticulously organized to evaluate forecasting methods across diverse domains and time frequencies. Its structure facilitates robust model comparison and ensures the applicability of insights to real-world scenarios.
 
 ---
 
-#### **Key Components**
+#### Key Components
 1. **Time Series Distribution**:
    - The dataset comprises **3003 time series** distributed across six domains:
      - **Micro**: Small-scale business data.
@@ -47,7 +49,7 @@ The M3 Competition dataset is meticulously organized to evaluate forecasting met
 
 ---
 
-#### **Purpose of Structuring**
+#### Purpose of Structuring
 - The consistent segmentation of in-sample and out-of-sample data ensures that models can be benchmarked on their ability to generalize beyond observed data.
 - Grouping by domain and frequency allows researchers to identify methods that perform best under specific conditions (e.g., seasonal vs. non-seasonal data).
 
@@ -55,14 +57,13 @@ The M3 Competition dataset is meticulously organized to evaluate forecasting met
 
 This structured approach makes the M3 dataset an invaluable resource for testing and comparing forecasting methodologies in both academic research and practical business applications.
 
-
 ![Dataset Visualization](figures/dataset_visualization.png)
 
 ---
 
-## **Methodologies and Models**
+## Methodologies and Models
 
-### **1. Data Exploration**
+### 1. Data Exploration
 - **Objective**: Gain insights into the structure and behavior of time series.
 - **Key Steps**:
   - Visualize trends, seasonality, and anomalies using seasonal plots, ACF, PACF, and decomposition.
@@ -71,7 +72,7 @@ This structured approach makes the M3 dataset an invaluable resource for testing
 
 ![Seasonal Plot](figures/seasonal_plot.png)
 
-### **2. ARIMA Modelling**
+### 2. ARIMA Modelling
 - **Script**: `Manual Arima Modelling.R`
 - **Objective**: Build ARIMA models to handle autoregressive and moving average components.
 - **Highlights**:
@@ -83,7 +84,7 @@ This structured approach makes the M3 dataset an invaluable resource for testing
 
 ![ARIMA Forecast](figures/arima_forecast.png)
 
-### **3. ETS (Exponential Smoothing) Modelling**
+### 3. ETS (Exponential Smoothing) Modelling
 - **Script**: `Manual ETS Modelling.R`
 - **Objective**: Model data with exponential smoothing techniques for seasonality and trend.
 - **Highlights**:
@@ -95,7 +96,7 @@ This structured approach makes the M3 dataset an invaluable resource for testing
 
 ![ETS Forecast](figures/ets_forecast.png)
 
-### **4. Regression Modelling**
+### 4. Regression Modelling
 - **Script**: `Regression Modelling.R`
 - **Objective**: Employ regression analysis incorporating trend and seasonal dummy variables.
 - **Highlights**:
@@ -105,7 +106,7 @@ This structured approach makes the M3 dataset an invaluable resource for testing
   - Regression models with seasonality outperformed simpler approaches.
   - Linear regression forecasts visualized against actual data.
 
-### **5. Batch Forecasting**
+### 5. Batch Forecasting
 - **Script**: `Batch Forecasting.R`
 - **Objective**: Automate forecasting for multiple time series using ARIMA and ETS models.
 - **Highlights**:
@@ -117,7 +118,7 @@ This structured approach makes the M3 dataset an invaluable resource for testing
 
 ---
 
-## **Evaluation Metrics**
+## Evaluation Metrics
 
 To assess the performance and business impact of the models, the following metrics were utilized:
 
@@ -140,7 +141,7 @@ To assess the performance and business impact of the models, the following metri
 
 ---
 
-## **Business Insights**
+## Business Insights
 
 This analysis equips businesses with:
 1. **Forecasting Reliability**:
@@ -157,9 +158,9 @@ This analysis equips businesses with:
 
 ---
 
-## **Usage Instructions**
+## Usage Instructions
 
-### **1. Prerequisites**
+### 1. Prerequisites
 Install the required R packages:
-```R
+```r
 install.packages(c("forecast", "tseries", "ggplot2", "fpp2", "smooth", "dplyr", "openxlsx"))
