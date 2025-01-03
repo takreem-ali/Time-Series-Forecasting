@@ -23,8 +23,6 @@ The dataset comprises **3003 time series** distributed across six domains:
 - **Macroeconomics**: National and global economic metrics.
 - **Others**: Miscellaneous series not classified in the above.
 
-![Time Series Distribution](figures/time_series_distribution.png)
-
 ---
 
 #### 2. Time Frequencies
