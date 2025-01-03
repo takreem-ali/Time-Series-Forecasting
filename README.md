@@ -28,16 +28,12 @@ The M3 Competition dataset is meticulously organized to evaluate forecasting met
      - **Macroeconomics**: National and global economic metrics.
      - **Others**: Miscellaneous series not classified in the above.
 
-   ![Time Series Distribution](figures/time_series_distribution.png)
-
 2. **Time Frequencies**:
    - The dataset includes time series of different frequencies:
      - **Yearly (645 series)**: Data recorded annually.
      - **Quarterly (756 series)**: Data recorded every quarter.
      - **Monthly (1428 series)**: Data recorded every month.
      - **Other frequencies**: Weekly, daily, and hourly series (a smaller portion).
-
-   ![Time Frequencies](figures/time_frequencies.png)
 
 3. **Components of Each Series**:
    - Each time series has two distinct parts:
@@ -59,120 +55,87 @@ The M3 Competition dataset is meticulously organized to evaluate forecasting met
 
 ---
 
-This structured approach makes the M3 dataset an invaluable resource for testing and comparing forecasting methodologies in both academic research and practical business applications.
+# Time Series Forecasting with ARIMA and ETS Models
 
-![Dataset Visualization](figures/dataset_visualization.png)
+## Overview
+This repository explores **time series forecasting** using data from the [M3 Competition](https://forecasters.org/resources/time-series-data/m3-competition/). Forecasting techniques include **manual modeling** of individual series and **batch forecasting** across multiple series. Both methods employ rigorous statistical techniques like ARIMA and ETS, supplemented by exploratory data analysis and evaluation metrics.
 
----
-
-## Methodologies and Models
-
-### 1. Data Exploration
-- **Objective**: Gain insights into the structure and behavior of time series.
-- **Key Steps**:
-  - Visualize trends, seasonality, and anomalies using seasonal plots, ACF, PACF, and decomposition.
-  - Statistical tests like ADF and KPSS to check stationarity.
-  - Outlier detection and summary statistics.
-
-![Seasonal Plot](figures/seasonal_plot.png)
-![ACF](figures/acf_pacf_acf.png)
-![PACF](figures/acf_pacf_pacf.png)
-![Decomposition](figures/decomposition.png)
-
-### 2. ARIMA Modelling
-- **Script**: `Manual Arima Modelling.R`
-- **Objective**: Build ARIMA models to handle autoregressive and moving average components.
-- **Highlights**:
-  - Optimal model selected based on AIC and residual diagnostics.
-  - Seasonal differencing applied to handle periodic patterns.
-- **Key Outputs**:
-  - ARIMA(0,1,1)(0,1,1) selected for its accuracy.
-  - Forecast comparison with out-of-sample data.
-
-![ARIMA Forecast](figures/arima_forecast.png)
-
-### 3. ETS (Exponential Smoothing) Modelling
-- **Script**: `Manual ETS Modelling.R`
-- **Objective**: Model data with exponential smoothing techniques for seasonality and trend.
-- **Highlights**:
-  - Multiple models tested, including ETS(AAN), ETS(AAA), and ETS(MAM).
-  - Model selection based on residuals and forecasting accuracy.
-- **Key Outputs**:
-  - ETS(MNA) provided the best performance with minimal errors.
-  - Prediction intervals visualized for decision-making.
-
-![ETS Forecast](figures/ets_forecast.png)
-
-### 4. Regression Modelling
-- **Script**: `Regression Modelling.R`
-- **Objective**: Employ regression analysis incorporating trend and seasonal dummy variables.
-- **Highlights**:
-  - Adjusted R-squared used for model evaluation.
-  - Forecasting extended using trend and seasonal components.
-- **Key Outputs**:
-  - Regression models with seasonality outperformed simpler approaches.
-  - Linear regression forecasts visualized against actual data.
-
-![Regression Forecast](figures/regression_forecast.png)
-
-### 5. Batch Forecasting
-- **Script**: `Batch Forecasting.R`
-- **Objective**: Automate forecasting for multiple time series using ARIMA and ETS models.
-- **Highlights**:
-  - Parallel processing for efficiency.
-  - Dynamic model selection based on out-of-sample accuracy.
-- **Key Outputs**:
-  - Benchmark results consolidated across series.
-  - Performance metrics evaluated for ARIMA, ETS, and baseline models.
-
-![Batch Forecasting](figures/batch_forecasting.png)
+## Table of Contents
+1. [Manual Forecasting](#manual-forecasting)
+   - Data Exploration
+   - Statistical Analysis
+   - Forecasting Results
+2. [Batch Forecasting](#batch-forecasting)
+   - Strategy Overview
+   - Model Selection
+   - Performance Evaluation
 
 ---
 
-## Evaluation Metrics
+## Manual Forecasting
 
-To assess the performance and business impact of the models, the following metrics were utilized:
+### Data Exploration
+Manual forecasting focuses on **series 1910**, which records the total shipment of glass containers from 1981 to 1992. The dataset is divided into two subsets:
+- **In-sample data**: Used for training models.
+- **Out-of-sample data**: Used for validation.
 
-1. **MAPE (Mean Absolute Percentage Error)**:
-   - Measures percentage error in forecasts.
-   - Lower values indicate better accuracy.
+#### Key Observations
+- **Seasonality**: Clear recurring patterns at the monthly level.
+- **Trend**: A slight downward trend in the early years.
+- **Variability**: Irregular fluctuations and occasional outliers, possibly due to external factors like market disruptions.
+- **Autocorrelation**: Analyzed using ACF and PACF plots, indicating no significant autocorrelation.
 
-2. **MASE (Mean Absolute Scaled Error)**:
-   - Compares errors to a naive baseline.
-   - Robust metric for varying scales.
+### Statistical Analysis
+#### Regression Modeling
+- Multiple linear regression models incorporating **trend** and **seasonality** were tested.
+- The model with the highest adjusted \( R^2 \) value (0.7572) was chosen.
+- Residual diagnostics confirmed a good fit, with normally distributed residuals and constant variance.
 
-3. **MPE (Mean Percentage Error)**:
-   - Highlights bias in forecasts (underestimation or overestimation).
+#### ARIMA Modeling
+- Stationarity was achieved through differencing, validated by ADF and KPSS tests.
+- The final model was ARIMA(2,1,1)(0,1,2)[12], selected using AIC optimization.
+- Residual analysis showed white noise, confirming model adequacy.
 
-**Visualization of Results**:
-- Forecast performance plotted across horizons for all models.
-- Summary tables showing model-specific metrics by series type and characteristics.
+#### ETS Modeling
+- The ETS (M,N,A) model (Multiplicative error, No trend, Additive seasonality) provided the best fit based on AICc.
+- This model accurately captured seasonal patterns and the stabilization of the trend over time.
 
-![MAPE](figures/evaluation_metrics_mape.png)
-![MASE](figures/evaluation_metrics_mase.png)
+### Forecasting Results
+- **Regression**: Accurate short-term projections, but limited in capturing non-linear trends.
+- **ARIMA**: Robust for medium- to long-term forecasts, with predictions closely aligned to observed data.
+- **ETS**: Better for short-term forecasts due to emphasis on recent observations.
 
----
-
-## Business Insights
-
-This analysis equips businesses with:
-1. **Forecasting Reliability**:
-   - ARIMA models excel in data with strong autoregressive components.
-   - ETS models are better suited for seasonality-driven series.
-
-2. **Decision Support**:
-   - Forecast intervals provide clarity for risk and uncertainty management.
-   - Regression models enable scenario analysis with trend and seasonal adjustments.
-
-3. **Efficiency Gains**:
-   - Batch forecasting streamlines prediction across large datasets.
-   - Automated model selection reduces manual effort.
+Graphs showcasing predictions with confidence intervals (80%, 90%, 95%, and 99%) validate the reliability of the models.
 
 ---
 
-## Usage Instructions
+## Batch Forecasting
 
-### 1. Prerequisites
-Install the required R packages:
-```r
-install.packages(c("forecast", "tseries", "ggplot2", "fpp2", "smooth", "dplyr", "openxlsx"))
+### Strategy Overview
+Batch forecasting applies automated modeling to **100 monthly time series** extracted from the M3 dataset. Each series is analyzed independently to select the most suitable model (ARIMA or ETS).
+
+### Model Selection
+- **Cross-Validation**:
+  - Rolling origin evaluation ensures models are validated on unseen data.
+  - MAPE (Mean Absolute Percentage Error) is used for model comparison.
+- **ETS**: Selected for series with strong seasonality and stable patterns.
+- **ARIMA**: Preferred for series with weaker seasonality or more complex trends.
+
+### Performance Evaluation
+- **Error Metrics**:
+  - MAPE: Measures prediction accuracy.
+  - MASE: Compares model accuracy against naive benchmarks.
+  - MPE: Highlights over- or under-predictions.
+- **Key Insights**:
+  - ARIMA models were used for 52% of series, while ETS was chosen for 48%.
+  - Both models outperformed benchmarks (Naive, Simple Exponential Smoothing, Moving Average).
+  - ARIMA showed stability for long-term forecasts, while ETS excelled in short-term accuracy.
+
+### Results Summary
+- ETS and ARIMA delivered comparable performance for short-term horizons.
+- For longer-term predictions, ARIMA demonstrated more stable accuracy.
+- Visualizations include:
+  - Forecast plots with confidence intervals.
+  - Residual diagnostics (ACF, PACF, Q-Q plots).
+
+---
