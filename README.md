@@ -147,7 +147,8 @@ To assess the performance and business impact of the models, the following metri
 - Forecast performance plotted across horizons for all models.
 - Summary tables showing model-specific metrics by series type and characteristics.
 
-![Evaluation Metrics](figures/evaluation_metrics.png)
+![MAPE](figures/evaluation_metrics_mape.png)
+![MASE](figures/evaluation_metrics_mase.png)
 
 ---
 
