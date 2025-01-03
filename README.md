@@ -75,7 +75,8 @@ This structured approach makes the M3 dataset an invaluable resource for testing
   - Outlier detection and summary statistics.
 
 ![Seasonal Plot](figures/seasonal_plot.png)
-![ACF and PACF](figures/acf_pacf.png)
+![ACF](figures/acf_pacf_acf.png)
+![PACF](figures/acf_pacf_pacf.png)
 ![Decomposition](figures/decomposition.png)
 
 ### 2. ARIMA Modelling
