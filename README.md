@@ -10,8 +10,7 @@ The dataset used for this analysis is sourced from the M3 competition dataset, c
 - **In-sample Data (`x`)**: Historical observations used for model training.
 - **Out-of-sample Data (`xx`)**: Future observations used to evaluate forecast accuracy.
 
-Key characteristics of the dataset:
-### Structure of the M3 Competition Dataset
+# **Key characteristics of the dataset:**
 
 The M3 Competition dataset is meticulously organized to evaluate forecasting methods across diverse domains and time frequencies. Its structure facilitates robust model comparison and ensures the applicability of insights to real-world scenarios.
 
