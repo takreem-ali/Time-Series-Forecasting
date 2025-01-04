@@ -32,8 +32,6 @@ The dataset includes time series of different frequencies:
 - **Monthly (1428 series)**: Data recorded every month.
 - **Other frequencies**: Weekly, daily, and hourly series (a smaller portion).
 
-![Time Frequencies](figures/time_frequencies.png)
-
 ---
 
 # Time Series Forecasting with ARIMA and ETS Models
@@ -56,11 +54,9 @@ Manual forecasting focuses on **series 1910**, which records the total shipment 
 ### Forecasting Results
 - **ARIMA Forecast**: Robust for medium- to long-term predictions:
 
-![ARIMA Forecast](figures/arima_forecast.png)
+
 
 - **ETS Forecast**: Excellent for short-term accuracy:
-
-![ETS Forecast](figures/ets_forecast.png)
 
 ---
 
@@ -69,7 +65,6 @@ Manual forecasting focuses on **series 1910**, which records the total shipment 
 ### Strategy Overview
 Batch forecasting applies automated modeling to **100 monthly time series** extracted from the M3 dataset. Each series is analyzed independently to select the most suitable model (ARIMA or ETS).
 
-![Batch Forecasting Strategy](figures/batch_forecasting.png)
 
 ---
 
@@ -88,4 +83,4 @@ The models' performance is evaluated using error metrics like MAPE and MASE.
 - ETS and ARIMA delivered comparable performance for short-term horizons.
 - For longer-term predictions, ARIMA demonstrated more stable accuracy.
 
-![Forecast Accuracy](figures/FORECAST CORRECT.png)
+
