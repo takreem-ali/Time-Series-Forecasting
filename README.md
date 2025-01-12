@@ -47,30 +47,26 @@ Manual forecasting focused on **series 1910**, representing monthly glass contai
 - **Trends**: A slight downward trend was detected in earlier years.
 - **Outliers**: Occasional spikes and dips suggest external influences on shipment volumes.
 
-Exploratory visualizations:
-- **ACF Plot**: ![ACF Plot](figures/ACF data exp.png)
-- **Decomposition**: ![Decomposition](figures/Decompose data exp.png)
-
 #### Forecasting Models
 
 ##### ARIMA (AutoRegressive Integrated Moving Average)
 - **Strengths**: Robust for medium- and long-term predictions; handles non-stationary data effectively.
-- **Forecast Visualization**: ![ARIMA Forecast](figures/arima_forecast.png)
+- **Forecast Visualization**: ![ARIMA Forecast](images_for_readme/Manual_Arima.png)
 
 ##### ETS (Exponential Smoothing State Space Model)
 - **Strengths**: Effective for short-term forecasting with pronounced seasonality.
-- **Forecast Visualization**: ![ETS Forecast](figures/ets_forecast.png)
+- **Forecast Visualization**: ![ETS Forecast](images_for_readme/Manual_ETS.png)
 
 ##### Regression Modeling
-- **Residual Analysis**: ![Residual Analysis](figures/Residuals from fit3.png)
-- **Forecast Visualization**: ![Regression Forecast](figures/regression_forecast.png)
+- **Residual Analysis**: ![Residual Analysis](images_for_readme/Residuals VS Fitted.png)
+- **Forecast Visualization**: ![Actual vs Fitted](images_for_readme/Act vs Fitted.png)
 
 ---
 
 ### Batch Forecasting
 
 #### Strategy Overview
-Batch forecasting applied automated ARIMA and ETS models to 100 monthly time series extracted from the M3 dataset (series 1501–2500 ending in ‘9’).
+Batch forecasting applied automated ARIMA and ETS models to 100 monthly time series extracted from the M3 dataset.
 
 #### Performance Evaluation
 - **Evaluation Metrics (MAPE)**: ![MAPE](figures/evaluation_metrics_mape.png)
