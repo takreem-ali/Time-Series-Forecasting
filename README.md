@@ -1,7 +1,7 @@
 
 # Comprehensive Time Series Forecasting
 
-This repository showcases a detailed time series forecasting analysis using data from the **Makridakis M3 Competition**. The project demonstrates technical expertise in forecasting models such as ARIMA, ETS, and regression, with practical applications in industries like manufacturing, supply chain, and finance.
+This repository presents a detailed time series forecasting analysis using data from the **Makridakis M3 Competition**. The project demonstrates technical expertise in forecasting models such as ARIMA, ETS, and regression, with practical applications in industries like manufacturing, supply chain, and finance.
 
 ## 1. Project Overview
 
@@ -36,13 +36,25 @@ The primary goals of this project include:
 - Best-fit model: **ARIMA(2,1,1)(0,1,2)**.
 - Validated results using residual diagnostics (ACF, PACF).
 
+**Visualization**:
+![ARIMA Forecast](images_for_readme/Manual_Arima.png)
+
 ### ETS Modeling
 - Evaluated multiple ETS models: **MNA**, **AAA**, **MAM**.
 - Best-fit model: **MNA**, capturing multiplicative errors and additive seasonality.
 
+**Visualization**:
+![ETS Forecast](images_for_readme/Manual_ETS.png)
+
 ### Regression Modeling
 - Built multiple linear regression models incorporating trend and seasonal dummies.
 - Selected model with highest adjusted \(R^2\) value (75.72%) after diagnostic checks.
+
+**Visualizations**:
+- Residual Analysis:  
+  ![Residual Analysis](images_for_readme/Residuals_vs_Fitted.png)
+- Actual vs Fitted:  
+  ![Actual vs Fitted](images_for_readme/Act_vs_Fitted.png)
 
 ---
 
@@ -51,7 +63,6 @@ The primary goals of this project include:
 ### Manual Forecasting Results
 - **ARIMA**: Accurate medium- to long-term predictions with low residual error.
 - **ETS**: Strong short-term performance, capturing seasonal patterns effectively.
-- **Regression**: Explained 75.72% of variability using both trend and seasonality.
 
 ### Batch Forecasting Results
 - Automated model selection applied to 100 time series:
@@ -62,29 +73,19 @@ The primary goals of this project include:
   - Mean Absolute Scaled Error (MASE)
   - Mean Percentage Error (MPE)
 
----
-
-## 5. Figures and Visualizations
-
-### Manual Forecasting Visualizations
-- ARIMA Forecast: [Embed ARIMA plot here]
-- ETS Forecast: [Embed ETS plot here]
-- Regression Analysis: [Embed Residuals vs Fitted plot here]
-
-### Batch Forecasting Visualizations
-- Model Selection Performance (MAPE): [Embed MAPE comparison plot here]
-- Residual Analysis: [Embed residual diagnostics plots here]
+**Visualization**:  
+![MAPE, MASE, and MPE](images_for_readme/MAPE_MASE_MPE.png)
 
 ---
 
-## 6. Industry Applications
+## 5. Industry Applications
 - **Supply Chain**: Optimize inventory levels by predicting seasonal demand.
 - **Manufacturing**: Align production schedules with forecasted trends.
 - **Finance**: Anticipate market shifts using historical patterns.
 
 ---
 
-## 7. Conclusion and Future Work
+## 6. Conclusion and Future Work
 
 This project demonstrates the ability to:
 - Apply advanced forecasting models to real-world datasets.
@@ -105,17 +106,4 @@ This project demonstrates the ability to:
   - `Manual ETS Modelling.R`: ETS modeling and forecasting.
   - `Batch Forecasting.R`: Automated model selection for 100 time series.
 
-- **Documentation**:
-  - Detailed methodology and results.
-
 ---
-
-## Acknowledgments
-
-Special thanks to the Makridakis M3 Competition for the dataset and the inspiration for this analysis.
-
----
-
-## Contact
-
-For inquiries, reach out via [Your Email/LinkedIn].
