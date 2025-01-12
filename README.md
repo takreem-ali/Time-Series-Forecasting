@@ -1,46 +1,121 @@
 
-# Comprehensive Time Series Forecasting with the M3 Competition Dataset
+# Comprehensive Time Series Forecasting
 
-This repository presents a detailed business analytics report on time series forecasting, leveraging statistical and machine learning models to analyze and predict future trends. The analysis includes exploratory data insights, forecasting model implementation, evaluation metrics, and actionable insights for industry applications.
+This repository showcases a detailed time series forecasting analysis using data from the **Makridakis M3 Competition**. The project demonstrates technical expertise in forecasting models such as ARIMA, ETS, and regression, with practical applications in industries like manufacturing, supply chain, and finance.
 
-## Dataset Overview
+## 1. Project Overview
 
-The dataset analyzed in this project originates from the Makridakis M3 Competition, a widely recognized benchmarking dataset for time series forecasting. It comprises diverse time series from industries such as finance, retail, and manufacturing, providing a robust basis for evaluating forecasting methods.
-
----
-
-## Time Series Forecasting Models
-
-### Manual Forecasting
-
-#### Forecasting Models
-
-##### ARIMA (AutoRegressive Integrated Moving Average)
-- **Strengths**: Robust for medium- and long-term predictions; handles non-stationary data effectively.
-- **Forecast Visualization**: ![ARIMA Forecast](images_for_readme/Manual_Arima.png)
-
-##### ETS (Exponential Smoothing State Space Model)
-- **Strengths**: Effective for short-term forecasting with pronounced seasonality.
-- **Forecast Visualization**: ![ETS Forecast](images_for_readme/Manual_ETS.png)
-
-##### Regression Modeling
-- **Residual Analysis**: ![Residual Analysis](images_for_readme/Residuals VS Fitted.png)
-- **Forecast Visualization**: ![Actual vs Fitted](images_for_readme/Act vs Fitted.png)
+The primary goals of this project include:
+- **Manual Forecasting**: Applying ARIMA and ETS models to forecast glass container shipments (Series 1910).
+- **Batch Forecasting**: Automating model selection (ARIMA vs. ETS) for 100 monthly time series.
+- **Real-World Applications**: Providing actionable insights for inventory management, demand forecasting, and operational planning.
 
 ---
 
-### Batch Forecasting
+## 2. Dataset Overview
 
-#### Performance Evaluation
-- **Evaluation Metrics**: ![MAPE, MASE, and MPE](images_for_readme/MAPE_MASE_MPE.png)
+**Source**: Makridakis M3 Competition dataset  
+**Key Characteristics**:
+- **In-Sample Data (x)**: Historical observations used for training models.
+- **Out-of-Sample Data (xx)**: Future observations reserved for validating forecasts.
+
+**Focus Areas**:
+1. **Glass Container Shipments (Series 1910)**: Monthly data from 1981–1992.
+2. **Batch Forecasting**: 100 monthly series (1501–2500 ending with '9').
 
 ---
 
-## Conclusion
+## 3. Methodology
 
-Forecasting provides critical insights for decision-making in various industries. This project demonstrates:
-- Expertise in time series analysis and model selection.
-- Application of advanced forecasting techniques to real-world datasets.
-- Clear communication of results through comprehensive metrics and visualizations.
+### Exploratory Data Analysis (EDA)
+- Decomposed time series into seasonal, trend, and residual components using `decompose` and `stl`.
+- Identified key metrics such as seasonality, trends, variance, and outliers.
 
-By combining manual and automated approaches, the analysis achieves high accuracy and scalability, showcasing the practical value of predictive analytics in business and beyond.
+### ARIMA Modeling
+- Conducted stationarity tests (ADF, KPSS) and seasonal differencing.
+- Best-fit model: **ARIMA(2,1,1)(0,1,2)**.
+- Validated results using residual diagnostics (ACF, PACF).
+
+### ETS Modeling
+- Evaluated multiple ETS models: **MNA**, **AAA**, **MAM**.
+- Best-fit model: **MNA**, capturing multiplicative errors and additive seasonality.
+
+### Regression Modeling
+- Built multiple linear regression models incorporating trend and seasonal dummies.
+- Selected model with highest adjusted \(R^2\) value (75.72%) after diagnostic checks.
+
+---
+
+## 4. Key Results
+
+### Manual Forecasting Results
+- **ARIMA**: Accurate medium- to long-term predictions with low residual error.
+- **ETS**: Strong short-term performance, capturing seasonal patterns effectively.
+- **Regression**: Explained 75.72% of variability using both trend and seasonality.
+
+### Batch Forecasting Results
+- Automated model selection applied to 100 time series:
+  - ARIMA was selected for 52% of cases (better long-term stability).
+  - ETS excelled in 48% of cases (superior short-term accuracy).
+- Performance evaluation metrics:
+  - Mean Absolute Percentage Error (MAPE)
+  - Mean Absolute Scaled Error (MASE)
+  - Mean Percentage Error (MPE)
+
+---
+
+## 5. Figures and Visualizations
+
+### Manual Forecasting Visualizations
+- ARIMA Forecast: [Embed ARIMA plot here]
+- ETS Forecast: [Embed ETS plot here]
+- Regression Analysis: [Embed Residuals vs Fitted plot here]
+
+### Batch Forecasting Visualizations
+- Model Selection Performance (MAPE): [Embed MAPE comparison plot here]
+- Residual Analysis: [Embed residual diagnostics plots here]
+
+---
+
+## 6. Industry Applications
+- **Supply Chain**: Optimize inventory levels by predicting seasonal demand.
+- **Manufacturing**: Align production schedules with forecasted trends.
+- **Finance**: Anticipate market shifts using historical patterns.
+
+---
+
+## 7. Conclusion and Future Work
+
+This project demonstrates the ability to:
+- Apply advanced forecasting models to real-world datasets.
+- Evaluate model performance using comprehensive metrics.
+- Translate analytical results into actionable insights for business decisions.
+
+### Future Directions:
+1. Incorporating external factors (e.g., economic indicators) for enhanced forecasting.
+2. Exploring deep learning models for non-linear patterns.
+
+---
+
+## Repository Contents
+
+- **R Code Files**:
+  - `Data Exploration.R`: Initial EDA and visualization.
+  - `Manual ARIMA Modelling.R`: ARIMA modeling and forecasting.
+  - `Manual ETS Modelling.R`: ETS modeling and forecasting.
+  - `Batch Forecasting.R`: Automated model selection for 100 time series.
+
+- **Documentation**:
+  - Detailed methodology and results.
+
+---
+
+## Acknowledgments
+
+Special thanks to the Makridakis M3 Competition for the dataset and the inspiration for this analysis.
+
+---
+
+## Contact
+
+For inquiries, reach out via [Your Email/LinkedIn].
