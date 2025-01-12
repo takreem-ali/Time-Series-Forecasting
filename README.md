@@ -52,9 +52,9 @@ The primary goals of this project include:
 
 **Visualizations**:
 - Residual Analysis:  
-  ![Residual Analysis](images_for_readme/Residuals_vs_Fitted.png)
+  ![Residual Analysis](images_for_readme/Residuals VS Fitted.png)
 - Actual vs Fitted:  
-  ![Actual vs Fitted](images_for_readme/Act_vs_Fitted.png)
+  ![Actual vs Fitted](images_for_readme/Act vs Fitted.png)
 
 ---
 
