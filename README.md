@@ -1,86 +1,146 @@
+
 # Comprehensive Time Series Forecasting with the M3 Competition Dataset
 
-This repository presents a comprehensive business analytics report on time series forecasting, utilizing various statistical and machine learning models to analyze and predict future trends. The analysis covers exploratory data insights, forecasting models, evaluation metrics, and actionable business insights.
-
----
+This repository presents a detailed business analytics report on time series forecasting, leveraging statistical and machine learning models to analyze and predict future trends. The analysis includes exploratory data insights, forecasting model implementation, evaluation metrics, and actionable insights for industry applications.
 
 ## Dataset Overview
 
-The dataset used for this analysis is sourced from the M3 competition dataset, containing various time series data across industries like finance, retail, and manufacturing. Each time series includes:
-- **In-sample Data (`x`)**: Historical observations used for model training.
-- **Out-of-sample Data (`xx`)**: Future observations used to evaluate forecast accuracy.
-
----
+The dataset analyzed in this project originates from the Makridakis M3 Competition, a widely recognized benchmarking dataset for time series forecasting. It comprises diverse time series from industries such as finance, retail, and manufacturing, providing a robust basis for evaluating forecasting methods.
 
 ### Key Characteristics of the Dataset
 
 #### 1. Time Series Distribution
-The dataset comprises **3003 time series** distributed across six domains:
-- **Micro**: Small-scale business data.
-- **Industry**: Manufacturing and production.
-- **Finance**: Economic and stock market indicators.
-- **Demographics**: Population, births, deaths, etc.
-- **Macroeconomics**: National and global economic metrics.
-- **Others**: Miscellaneous series not classified in the above.
-
----
+The dataset includes 3003 time series distributed across six domains:
+- **Micro**: Small-scale business data, including product-level sales.
+- **Industry**: Manufacturing and production data.
+- **Finance**: Economic indicators and stock market trends.
+- **Demographics**: Population statistics, including births and deaths.
+- **Macroeconomics**: National and global economic measures.
+- **Others**: Miscellaneous series not categorized above.
 
 #### 2. Time Frequencies
-The dataset includes time series of different frequencies:
-- **Yearly (645 series)**: Data recorded annually.
-- **Quarterly (756 series)**: Data recorded every quarter.
-- **Monthly (1428 series)**: Data recorded every month.
-- **Other frequencies**: Weekly, daily, and hourly series (a smaller portion).
+The dataset comprises time series with varying frequencies:
+- **Yearly**: 645 series recorded annually.
+- **Quarterly**: 756 series recorded quarterly.
+- **Monthly**: 1428 series recorded monthly.
+- **Other Frequencies**: Weekly, daily, and hourly series (a smaller portion).
+
+Each time series includes:
+- **In-sample Data (x)**: Historical observations used for training models.
+- **Out-of-sample Data (xx)**: Future observations reserved for model evaluation.
 
 ---
 
-# Time Series Forecasting with ARIMA and ETS Models
+## Time Series Forecasting Models
 
-## Manual Forecasting
+### Manual Forecasting
 
-### Data Exploration
-Manual forecasting focuses on **series 1910**, which records the total shipment of glass containers from 1981 to 1992.
+#### Data Exploration
+Manual forecasting focused on **series 1910**, representing monthly glass container shipments from 1981 to 1992. Key observations from the data include:
+- **Seasonality**: Monthly patterns were observed, with certain months consistently exhibiting higher or lower shipments.
+- **Trends**: A slight downward trend was detected in earlier years.
+- **Outliers**: Occasional spikes and dips suggest external influences on shipment volumes.
 
-- The seasonal plot shows clear monthly seasonality:
+Exploratory visualizations:
+- **Seasonal Plots**: Highlight monthly seasonality.
+- **Decomposition**: Breaks down data into trend, seasonal, and residual components for clearer insights.
 
-![Seasonal Plot](figures/seasonal_plot.png)
+#### Forecasting Models
 
-- The decomposition highlights the trend, seasonality, and residuals:
+##### ARIMA (AutoRegressive Integrated Moving Average)
+- **Strengths**: Robust for medium- and long-term predictions; handles non-stationary data effectively.
+- **Stationarity Testing**: ADF and KPSS tests confirmed stationarity after differencing.
+- **Selected Model**: ARIMA(2,1,1)(0,1,2)[12], chosen for its low AIC and accurate residual patterns.
+- **Forecasting Results**: Provided precise predictions over an 18-month horizon with confidence intervals (80%, 90%, 95%, 99%).
 
-![Decomposition](figures/decomposition.png)
+##### ETS (Exponential Smoothing State Space Model)
+- **Strengths**: Effective for short-term forecasting with pronounced seasonality.
+- **Selected Model**: ETS (M,N,A), optimized using AICc.
+- **Forecasting Results**: Captured seasonal variations accurately with consistent short-term predictions.
 
----
-
-### Forecasting Results
-- **ARIMA Forecast**: Robust for medium- to long-term predictions:
-
-
-
-- **ETS Forecast**: Excellent for short-term accuracy:
-
----
-
-## Batch Forecasting
-
-### Strategy Overview
-Batch forecasting applies automated modeling to **100 monthly time series** extracted from the M3 dataset. Each series is analyzed independently to select the most suitable model (ARIMA or ETS).
-
-
----
-
-### Performance Evaluation
-The models' performance is evaluated using error metrics like MAPE and MASE.
-
-- **MAPE Results**:
-![MAPE Evaluation](figures/evaluation_metrics_mape.png)
-
-- **MASE Results**:
-![MASE Evaluation](figures/evaluation_metrics_mase.png)
+##### Regression Modeling
+- **Exploration**: Trend, seasonality, and their combinations were analyzed.
+- **Best Model**: Regression including both trend and seasonality (Adjusted \(R^2 = 0.7572")).
+- **Residual Analysis**: Indicated a good fit with normally distributed errors and minimal bias.
+- **Forecasting Results**: Projected 18-month trends with multiple confidence levels.
 
 ---
 
-### Results Summary
-- ETS and ARIMA delivered comparable performance for short-term horizons.
-- For longer-term predictions, ARIMA demonstrated more stable accuracy.
+### Batch Forecasting
 
+#### Strategy Overview
+Batch forecasting applied automated ARIMA and ETS models to 100 monthly time series extracted from the M3 dataset (series 1501–2500 ending in ‘9’). Each series was independently analyzed to select the most suitable model based on Mean Absolute Percentage Error (MAPE).
 
+#### Performance Evaluation
+
+##### Cross-Validation
+- **Method**: Rolling origin cross-validation with dynamically determined validation windows.
+- **Goal**: Robust evaluation of model performance across varying horizons.
+
+##### Benchmarking
+- **Baseline Models**: Naive, Moving Average, and Simple Exponential Smoothing.
+- **Comparison**: ETS and ARIMA outperformed baseline models in both short- and long-term forecasts.
+
+##### Results Summary
+- **Short-Term Horizons**: ETS demonstrated slightly better performance due to its emphasis on recent data.
+- **Long-Term Horizons**: ARIMA exhibited more stable accuracy, suggesting better adaptability to long-term patterns.
+- **Model Usage**: ARIMA was selected for 52% of series, ETS for 48%.
+
+---
+
+## Evaluation Metrics
+
+### MAPE (Mean Absolute Percentage Error)
+- **Definition**: Measures the average percentage error between predicted and actual values.
+- **Findings**:
+  - Both ARIMA and ETS maintained low MAPE values across short-term horizons.
+  - ARIMA demonstrated greater stability in longer-term forecasts.
+
+### MASE (Mean Absolute Scaled Error)
+- **Definition**: Compares forecast errors against a naive benchmark.
+- **Findings**: ETS outperformed Naive and Simple Exponential Smoothing in all evaluated series.
+
+### MPE (Mean Percentage Error)
+- **Definition**: Indicates model bias by considering the direction of errors.
+- **Findings**: Both ARIMA and ETS exhibited minimal bias, with MPE close to zero across horizons.
+
+---
+
+## Key Insights and Business Applications
+
+1. **Seasonality Insights**: The analysis of glass container shipments revealed consistent seasonal trends, aiding inventory and production planning.
+2. **Model Recommendations**:
+   - **Short-Term**: ETS is preferable for its accuracy in capturing recent patterns.
+   - **Long-Term**: ARIMA provides better stability and adaptability.
+3. **Automated Forecasting**: The batch forecasting approach enables scalable and efficient prediction across diverse time series.
+4. **Error Metrics**: Comprehensive evaluation using MAPE, MASE, and MPE ensures robust model selection.
+
+---
+
+## Repository Contents
+
+1. **Scripts**:
+   - `Batch_Forecasting.R`: Implements batch forecasting with ARIMA and ETS models.
+   - `Manual_ARIMA_Modelling.R`: Detailed ARIMA modeling for series 1910.
+   - `Manual_ETS_Modelling.R`: ETS modeling for series 1910.
+   - `Regression_Modelling.R`: Linear regression models with trend and seasonality.
+   - `Data_Exploration.R`: Exploratory analysis of time series data.
+
+2. **Documentation**:
+   - Detailed markdown files explaining the methodology and results.
+   - Visualizations illustrating key findings.
+
+3. **Outputs**:
+   - Forecast results for all models.
+   - Error metrics comparisons.
+
+---
+
+## Conclusion
+
+Forecasting provides critical insights for decision-making in various industries. This project demonstrates:
+- Expertise in time series analysis and model selection.
+- Application of advanced forecasting techniques to real-world datasets.
+- Clear communication of results through comprehensive metrics and visualizations.
+
+By combining manual and automated approaches, the analysis achieves high accuracy and scalability, showcasing the practical value of predictive analytics in business and beyond.
